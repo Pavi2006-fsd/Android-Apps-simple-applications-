@@ -1,0 +1,67 @@
+package com.example.program2;
+import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends Activity {
+     Intent Convertor;
+     Button Next,b1;
+     EditText t1,t2;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		
+		 t1 = (EditText) findViewById(R.id.editText1); // Meter
+	     t2 = (EditText) findViewById(R.id.editText2); // Result
+	     Next=(Button) findViewById(R.id.button2);
+	     b1 = (Button) findViewById(R.id.button1);
+
+	        b1.setOnClickListener(new View.OnClickListener() {
+	            @Override
+	            public void onClick(View v) {
+	            	String result=t1.getText().toString();
+                    
+	            	if(result.length()>0){
+	               
+	                double meter = Double.parseDouble(result);
+	                double kilometer = meter / 1000;
+	                t2.setText(kilometer+"km");
+	            	}
+
+	            	else{
+	            		Toast.makeText(getApplicationContext(), "Please Fill the fields",0).show();
+	            	}
+	            }
+	        });
+	    
+
+    Next.setOnClickListener(new OnClickListener(){
+    	@Override
+    	public void onClick(View v){
+    		Intent a= new Intent(getApplicationContext(),SecondActivity.class);
+    		startActivity(a);
+    	}
+    });
+
+	}
+	
+
+
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+	// Inflate the menu; this adds items to the action bar if it is present.
+	getMenuInflater().inflate(R.menu.second, menu);
+	return true;
+}
+
+}
+
+
+	
