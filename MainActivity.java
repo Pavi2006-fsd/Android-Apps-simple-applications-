@@ -1,4 +1,4 @@
-package com.example.program1;
+package com.example.uicomponents;
 
 import android.os.Bundle;
 import android.app.Activity;
